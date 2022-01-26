@@ -1,0 +1,38 @@
+server:
+  port: 8091
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: api-gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # auth0
+          issuer-uri: https://dev-acnsk803.us.auth0.com/
+          audience: http://space-trip.andreigog.com
+  cloud:
+    gateway:
+      routes:
+        - id: planets
+          uri: lb://planet-service
+          predicates:
+            - Path=/v1/planets/**
+        - id: crews
+          uri: lb://crew-service
+          predicates:
+            - Path=/v1/crews/**
+
+security:
+  auth:
+    routes:
+      planets:
+        authenticatorClasses:
+          - com.andreigog.apigateway.security.oauth2.JwtAuthenticator
+      crews:
+        authenticatorClasses:
+          - com.andreigog.apigateway.security.oauth2.JwtAuthenticator
