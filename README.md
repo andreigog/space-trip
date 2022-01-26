@@ -3,7 +3,7 @@
 
 ## Authorization
 
-Auth0 was used for authorizing the incoming requests. Auth0 is an OAuth2 provider capable of supporting multiple flows. 
+[Auth0](https://auth0.com/docs) was used for authorizing the incoming requests. Auth0 is an OAuth2 provider capable of supporting multiple flows. 
 The one used in **space-trip** is [Resource Owner Passsowrd Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow/)
 Use the following Auth0 request to get an *access token* and use it as an Authorization Bearer in your **space-trip** requests.
 
